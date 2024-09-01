@@ -1,5 +1,3 @@
-import { response } from "express";
-
 class ApiResponse {
   constructor(statusCode, data, message = "Success") {
     this.statusCode = statusCode;
