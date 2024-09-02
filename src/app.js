@@ -23,4 +23,20 @@ app.use(express.static("public")); //for PDF and image or favicon that we want t
 
 app.use(cookieParser());
 
+// router import
+
+import userRouter from "./routes/user.routers.js";
+
+//router declaration
+// app.get - > when we are not importing router , router and controller are here in same file
+//app.use-> when we use middleware i.e. router is in seperate file
+
+//below is the middleware , benefir is that we don't need to write it again just add the extended url part
+
+// https://localhost:800/api/v1/users/register
+
+app.use("/api/v1/users", userRouter);
+
+// https://localhost:800/api/v1/users/login
+//app.use("/api/v1/users", loginRoute);
 export { app };
