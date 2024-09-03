@@ -19,7 +19,7 @@ const userSchema = new Schema(
       lowercase: true,
       trim: true,
     },
-    fullname: {
+    fullName: {
       type: String,
       required: true,
       index: true,
@@ -37,7 +37,7 @@ const userSchema = new Schema(
       type: String, // we will be encoding so all types will become string
       required: [true, "Password id required"],
     },
-    refereshToken: { type: String },
+    refreshToken: { type: String },
   },
   { timestamps: true }
 );
@@ -65,7 +65,7 @@ userSchema.methods.generateAccessToken = function () {
       _id: this.id, //data is saved in DB , we get this from mongoDB auto generated
       email: this.email,
       username: this.username,
-      fullname: this.fullname,
+      fullName: this.fullName,
     },
     process.env.ACCESS_TOKEN_SECRET,
     {
@@ -79,7 +79,7 @@ userSchema.methods.generateRefreshToken = function () {
       _id: this.id, //data is saved in DB , we get this from mongoDB auto generated
       email: this.email,
       username: this.username,
-      fullname: this.fullname,
+      fullName: this.fullName,
     },
     process.env.REFRESH_TOKEN_SECRET,
     {
